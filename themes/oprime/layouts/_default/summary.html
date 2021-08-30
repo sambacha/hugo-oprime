@@ -1,0 +1,12 @@
+<article class="h-entry border-bottom">
+	{{ if .Title }}
+	<h2 class="p-name">
+		<a class="u-url" href="{{ .RelPermalink }}">{{ .Title }}</a>
+	</h2>
+	{{ end }}
+	{{ if not .Params.nometa }}
+	{{ partialCached "summary_meta" . .Permalink }}
+	{{ end }}
+	<p class="p-summary">{{ .Summary }}</p>
+	<p>{{ if (ne .Params.images nil) }}🖼️{{ end }} <a class="u-url" href="{{ .RelPermalink }}">{{ T "read_more" }}</a></p>
+</article>

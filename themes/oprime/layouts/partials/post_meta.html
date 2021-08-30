@@ -1,0 +1,20 @@
+<div class="p">
+	{{ if not .Date.IsZero }}
+	<div><time class="dt-published" datetime="{{.Date.Format "2006-01-02T15:04:05Z07:00"}}">{{.Date.Format ( .Site.Params.dateformat | default "January 02, 2006")}}</time>{{ if not (eq .FirstSection.RelPermalink .RelPermalink) }} in <a href="{{ .FirstSection.RelPermalink }}">{{ .FirstSection.Title }}</a>{{ end }}</div>
+	{{ end }}
+	{{ if ne .Date .Lastmod }}
+	<div><time class="dt-updated" datetime="{{.Lastmod.Format "2006-01-02T15:04:05Z07:00"}}">{{ T "meta_lastmod" }}: {{.Lastmod.Format ( .Site.Params.dateformat | default "January 02, 2006")}}</time></div>
+	{{ end }}
+	{{ with .Param "indieweb.reply" }}{{ if .link }}
+	<div>{{ T "meta_reply_to" }}: <a class="u-in-reply-to" href="{{ .link }}" target="_blank" rel="noopener">{{ .title | default .link }}</a></div>
+	{{ end }}{{ end }}
+	{{ with .Param "indieweb.like" }}{{ if .link }}
+	<div>{{ T "meta_like_of" }}: <a class="u-like-of" href="{{ .link }}" target="_blank" rel="noopener">{{ .title | default .link }}</a></div>
+	{{ end }}{{ end }}
+	{{ with .Param "syndicate" }}
+	<div>{{ T "also_on" }}:{{ $delimiter := "" }}{{ range $index, $link := . }}{{ $delimiter }} <a class="u-syndication" href="{{ $link }}" target="_blank" rel="nofollow noopener noreferrer">{{ (urls.Parse $link).Host }}</a>{{ $delimiter = "," }}{{ end }}</div>
+	{{ end }}
+	{{ if .IsTranslated }}
+	<div>{{ i18n "translations" }}: {{ $delimiter := "" }}{{ range .Translations }}{{ $delimiter }}<a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>{{ $delimiter = ", " }}{{ end }}</div>
+	{{ end }}
+</div>

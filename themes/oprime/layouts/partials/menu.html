@@ -1,0 +1,6 @@
+{{ if .Site.Menus.main }}
+<nav>
+	{{ $first := true }}
+	{{ range sort .Site.Menus.main }}{{ if ne $first true }} &bull; {{ end }}<a href="{{ .URL }}">{{ .Name }}</a>{{ $first = false }}{{ end }}
+</nav>
+{{ end }}

@@ -1,0 +1,6 @@
+<article class="h-entry border-bottom">
+    {{ range .Params.images }}
+    <p><a href="{{ . | safeURL }}"><img src="{{ . | safeURL }}" loading="lazy"></a></p>
+    {{ end }}
+    <p><a class="u-url" href="{{ .RelPermalink }}">{{ T "read_more" }}</a></p>
+</article>

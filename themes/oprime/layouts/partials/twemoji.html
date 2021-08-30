@@ -1,0 +1,4 @@
+{{ if .Param "twemoji" }}
+{{ $twemoji := resources.Get "js/twemoji.js" | minify | fingerprint }}
+<script defer src="{{ $twemoji.Permalink }}"></script>
+{{ end }}

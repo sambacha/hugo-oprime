@@ -1,0 +1,53 @@
+- id: read_more
+  translation: Read more
+
+- id: meta_lastmod
+  translation: Last modified
+
+- id: meta_reply_to
+  translation: Reply to
+
+- id: meta_like_of
+  translation: Like of
+
+- id: 404_title
+  translation: Page not found
+
+- id: 404_text
+  translation: "The page you were looking for appears to have been moved, deleted or does not exist."
+
+- id: wmform_label
+  translation: "Have you published a response to this? Paste the URL here."
+
+- id: wmform_btn
+  translation: "Send"
+
+- id: anon_comment
+  translation: "You can also create an anonymous comment."
+
+- id: related
+  translation: "Related"
+
+- id: share
+  translation: "Share"
+
+- id: interactions
+  translation: "Interactions"
+
+- id: also_on
+  translation: "Also on"
+
+- id: translations
+  translation: Translations
+
+- id: oldcontent
+  translation: This entry is already over one year old. It may no longer be up to date. Opinions may have changed.
+
+- id: speak
+  translation: Read to me, please.
+
+- id: stopspeak
+  translation: Stop speaking!
+
+- id: subscribe
+  translation: Subscribe

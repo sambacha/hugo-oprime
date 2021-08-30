@@ -1,0 +1,16 @@
+{{ if or (.Param "shareLink") (and (.Param "subscribeBtn") (.Param "subscribeLink")) (.Param "speak") }}
+<div class="p flex" id="post-actions">
+	{{ if (.Param "shareLink") }}
+	<a href="https://www.addtoany.com/share#url={{ .Permalink }}{{ with .Title }}&title={{ . }}{{ end }}" target="_blank" rel="nofollow noopener noreferrer" class="button invert">{{ T "share" }}</a>&nbsp;
+	{{ end }}
+	{{ if and (.Param "subscribeBtn") (.Param "subscribeLink") }}
+	<a href="{{ .Param "subscribeLink" }}" class="button invert">{{ T "subscribe" }}</a>&nbsp;
+	{{ end }}
+	{{ if (.Param "speak") }}
+	<button id="speakBtn" class="invert" style="display: none;"></button>
+	{{ $speakScript := resources.Get "js/speak.js" | minify | fingerprint }}
+	<script>const speakText = "{{ T "speak" }}";const stopSpeakText = "{{ T "stopspeak" }}";</script>
+	<script defer src="{{ $speakScript.RelPermalink }}" integrity="{{ $speakScript.Data.Integrity }}"></script>
+	{{ end }}
+</div>
+{{ end }}

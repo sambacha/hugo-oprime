@@ -1,0 +1,13 @@
+<footer>
+	{{ if .Site.Menus.footer }}
+	<nav>
+		{{ $first := true }}
+		{{ range sort .Site.Menus.footer }}
+		{{ if ne $first true }} &bull; {{ end }}
+		<a href="{{ .URL }}">{{ .Name }}</a>
+		{{ $first = false }}
+		{{ end }}
+	</nav>
+	{{ end }}
+	<p>&copy; {{ now.Format "2006" }} {{  .Site.Params.copyright | default .Site.Title  }}</p>
+</footer>

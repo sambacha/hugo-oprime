@@ -1,0 +1,14 @@
+{{ define "main" }}
+<main class="h-feed">
+	{{ with .Title }}<h1>{{ . }}</h1>{{ end }}
+	{{ if not .Params.nometa }}{{ partial "list_meta" . }}{{ end }}
+	{{ with .Content }}{{ . }}{{ end }}
+	{{ if ne (.Param "hideList") true }}
+	{{ range .Paginator.Pages }}
+		{{ .Render "summary" }}
+	{{ end }}
+	{{ end }}
+	{{ if (.Param "authorbox") }}{{ partialCached "authorbox" . }}{{ end }}
+</main>
+{{ partial "pagination" . }}
+{{ end }}

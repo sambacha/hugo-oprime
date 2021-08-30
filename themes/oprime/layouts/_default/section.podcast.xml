@@ -1,0 +1,41 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>{{ .Title }}</title>
+    <link>{{ .Permalink }}</link>
+    {{ with .OutputFormats.Get "PODCAST" }}{{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}{{ end }}
+    <description>{{ .Summary | truncate 4000 ""}}</description>
+    <itunes:summary>{{ .Summary | truncate 4000 ""}}</itunes:summary>
+    {{ with .Site.LanguageCode }}<language>{{.}}</language>{{end}}
+    {{ with .Site.Copyright }}<copyright>{{.}}</copyright>{{end}}
+    <lastBuildDate>{{ dateFormat "Mon, 2 Jan 2006 15:04:05 -0700" .Lastmod }}</lastBuildDate>
+    <itunes:author>{{ .Site.Author.name }}</itunes:author>
+    <itunes:type>episodic</itunes:type>
+    <itunes:owner>
+      <itunes:name>{{ .Site.Author.name }}</itunes:name>
+      <itunes:email>{{ .Params.podcast.email }}</itunes:email>
+    </itunes:owner>
+    <itunes:image href="{{ .Params.podcast.image }}"></itunes:image>
+    <image>
+      <url>{{ .Params.podcast.image }}</url>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+    </image>
+    <itunes:category text="{{ .Params.podcast.category }}"></itunes:category>
+    <itunes:explicit>{{ .Params.explicit | default "no" }}</itunes:explicit>
+    {{ range .RegularPages }}
+      <item>
+        <title>{{ .Title }}</title>
+        <itunes:title>{{ .Title }}</itunes:title>
+        <link>{{ .Permalink }}</link>
+        <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }} </pubDate>
+        {{ if .Params.guid }}<guid isPermaLink="false">{{ .Params.guid }}</guid>{{ else }}<guid>{{ .Permalink }}</guid>{{ end }}
+        <itunes:author>{{ .Site.Author.name }}</itunes:author>
+        <description>{{ .Summary  | plainify  }}</description>
+        <itunes:summary>{{ .Summary | plainify }}</itunes:summary>
+        {{ "<content:encoded><![CDATA[" | safeHTML }}{{ ( htmlUnescape ( .Content | html ) ) | safeHTML }}{{"]]></content:encoded>" | safeHTML}}
+        <enclosure url="{{ .Params.audio }}" {{ with .Params.audioSize }}length="{{ . }}"{{ end }} {{ with .Params.audioMime }}type="{{ . }}"{{ end }}/>
+      </item>
+    {{ end }}
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+{
+  "name": "Indiego",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sambacha/hugo-maxmin.git"
+  },
+  "keywords": [],
+  "author": "sam bacha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sambacha/hugo-maxmin/issues"
+  },
+  "homepage": "https://github.com/sambacha/hugo-maxmin#readme"
+}

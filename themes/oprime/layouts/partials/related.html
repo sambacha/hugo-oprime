@@ -1,0 +1,11 @@
+{{ $related := .Site.RegularPages.Related . | first 5 }}
+{{ with $related }}
+<details class="p" id="related">
+	<summary><b>{{ T "related" }}</b></summary>
+	<ul>
+		{{ range . }}
+		<li><a href="{{ .RelPermalink }}">{{ with .Title }}{{ . }}{{ else }}{{ .Summary | truncate 60 }}{{ end }}</a> <i>{{.Date.Format ( .Site.Params.dateformat | default "January 02, 2006")}}</i></li>
+		{{ end }}
+	</ul>
+</details>
+{{ end }}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ block "title" . }}{{ if not .IsHome }}{{ with .Title }}{{ . }} - {{end}}{{ end }}{{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/schema.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ partialCached "styles" . }}
+<link rel="shortcut icon" href="{{ .Site.Params.favicon }}">
+{{ range .AlternativeOutputFormats }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end }}
+{{ if .Param "original" }}
+<link rel="canonical" href="{{ .Param "original" }}">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
+
+{{ partialCached "customhead" . }}
+{{ partialCached "header" . }}
+{{ block "main" . }}
+{{ with .Content }}
+{{ . }}
+{{ end }}
+{{ end }}
+{{ partialCached "footer" . }}
+{{ partialCached "twemoji" . }}
+{{ partialCached "custombodyend" . }}

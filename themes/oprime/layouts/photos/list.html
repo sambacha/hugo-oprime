@@ -1,0 +1,14 @@
+{{ define "main" }}
+<main class="h-feed">
+	{{ with .Title }}<h1>{{ . }}</h1>{{ end }}
+	{{ if not .Params.nometa }}{{ partial "list_meta" . }}{{ end }}
+	{{ with .Content }}{{ . }}{{ end }}
+	{{ $photoSections := (.Site.Param "photoSections" | default (slice "posts")) }}
+	{{ $paginator := .Paginate ( where ( where .Site.RegularPages "Type" "in" $photoSections ) "Params.images" "!=" nil ) 5 }}
+	{{ range $paginator.Pages }}
+		{{ .Render "photosummary" }}
+	{{ end }}
+	{{ if (.Param "authorbox") }}{{ partialCached "authorbox" . }}{{ end }}
+</main>
+{{ partial "pagination" . }}
+{{ end }}

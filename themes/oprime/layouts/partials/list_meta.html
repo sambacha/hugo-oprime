@@ -1,0 +1,5 @@
+{{ if .IsTranslated }}
+<div class="p">
+	{{ i18n "translations" }}: {{ $delimiter := "" }}{{ range .Translations }}{{ $delimiter }}<a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>{{ $delimiter = ", " }}{{ end }}
+</div>
+{{ end }}

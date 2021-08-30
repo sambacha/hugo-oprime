@@ -1,0 +1,9 @@
+<header>
+	<h1>
+		<a href="{{ "" | relLangURL }}" rel="home" title="{{ .Site.Title }}">{{ .Site.Title }}</a>
+	</h1>
+	{{ with .Site.Params.subtitle }}<p><i>{{ . }}</i></p>{{ end }}
+	{{ partialCached "menu" . }}
+{{ if .Params.mathjax }}{{ partial "mathjax_support.html" . }}{{ end }}
+
+</header>

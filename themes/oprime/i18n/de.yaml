@@ -1,0 +1,50 @@
+- id: read_more
+  translation: Weiterlesen
+
+- id: meta_lastmod
+  translation: Zuletzt geändert
+
+- id: meta_reply_to
+  translation: Antwort auf
+
+- id: meta_like_of
+  translation: Like von
+
+- id: 404_title
+  translation: Seite nicht gefunden
+
+- id: 404_text
+  translation: "Die gesuchte Seite existiert nicht, wurde verschoben oder gelöscht."
+
+- id: wmform_label
+  translation: "Hast du eine Antwort hierzu veröffentlicht? Füg dir URL hier ein."
+
+- id: wmform_btn
+  translation: "Senden"
+
+- id: anon_comment
+  translation: "Du kannst auch einen anonymen Kommentar erstellen."
+
+- id: related
+  translation: "Ähnlich"
+
+- id: share
+  translation: "Teilen"
+
+- id: interactions
+  translation: "Interaktionen"
+
+- id: translations
+  translation: Übersetzungen
+
+- id: oldcontent
+  translation: Dieser Eintrag ist bereits über ein Jahr alt. Er ist möglicherweise nicht mehr aktuell. Meinungen können sich geändert haben.
+
+- id: speak
+  translation: Lies mir bitte vor.
+
+- id: stopspeak
+  translation: Hör auf zu sprechen!
+
+- id: subscribe
+  translation: Abonnieren

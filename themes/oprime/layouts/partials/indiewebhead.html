@@ -1,0 +1,17 @@
+{{- if .Param "indieweb.enabled" }}
+{{- with .Param "indieweb.endpoints.webmention" }}
+<link rel="webmention" href="{{ . }}" />
+{{- end }}
+{{- with .Param "indieweb.endpoints.pingback" }}
+<link rel="pingback" href="{{ . }}" />
+{{- end }}
+{{- with .Param "indieweb.endpoints.auth_endpoint" }}
+<link rel="authorization_endpoint" href="{{ . }}" />
+{{- end }}
+{{- with .Param "indieweb.endpoints.token_endpoint" }}
+<link rel="token_endpoint" href="{{ . }}" />
+{{- end }}
+{{- with .Param "indieweb.endpoints.micropub" }}
+<link rel="micropub" href="{{ . }}" />
+{{- end }}
+{{- end }}

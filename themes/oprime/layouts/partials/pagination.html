@@ -1,0 +1,11 @@
+{{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+<nav class="p flex">
+	{{ with .Paginator.Prev }}
+	<a class="button invert" href="{{ .URL }}">{{ .PageNumber }}</a>&nbsp;
+	{{ end }}
+	<div class="button invert">{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}</div>
+	{{ with .Paginator.Next }}
+	&nbsp;<a class="button invert" href="{{ .URL }}">{{ .PageNumber }}</a>
+	{{ end }}
+</nav>
+{{ end }}

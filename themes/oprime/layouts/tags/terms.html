@@ -1,0 +1,12 @@
+{{ define "main" }}
+<main>
+	{{ with .Title }}<h1>{{ . }}</h1>{{ end }}
+	{{ if not .Params.nometa }}{{ partial "list_meta" . }}{{ end }}
+	<p>
+		{{ range (.Paginate ( .Pages.ByTitle ) 1000).Pages }}
+		<a href="{{ .RelPermalink }}">{{ .Title }}</a><sup>{{ len .Pages }}</sup>
+		{{ end }}
+	</p>
+</main>
+{{ partial "pagination" . }}
+{{ end }}

@@ -1,0 +1,7 @@
+{{ if .Param "oldcontentwarning" }}
+{{ if .Date }}
+{{ if (.Date.AddDate 1 0 0).Before now }}
+<strong class="p border-top border-bottom">{{ ":warning:" | emojify }} {{ T "oldcontent" }}</strong>
+{{ end }}
+{{ end }}
+{{ end }}

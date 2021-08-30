@@ -1,0 +1,14 @@
+{{ if or (.GetTerms "tags") (.GetTerms "series") }}
+<p>
+	{{ with (.GetTerms "series") }}
+	{{ range sort . "Pages" "desc" }}
+	<a class="p-category" href="{{ .RelPermalink }}" rel="tag">{{ .Title }}</a><sup>{{ len .Pages }}</sup>
+	{{ end }}
+	{{ end }}
+	{{ with (.GetTerms "tags") }}
+	{{ range sort . "Pages" "desc" }}
+	<a class="p-category" href="{{ .RelPermalink }}" rel="tag">{{ .Title }}</a><sup>{{ len .Pages }}</sup>
+	{{ end }}
+	{{ end }}
+</p>
+{{ end }}

@@ -1,0 +1,15 @@
+
+
+## `hugo-maxmin`
+
+
+
+.
+[quote, Mark Shuttleworth, https://www.markshuttleworth.com/archives/123]
+____
+*Quote* 
+
+Renaming is the killer app of distributed version control
+
+____
+

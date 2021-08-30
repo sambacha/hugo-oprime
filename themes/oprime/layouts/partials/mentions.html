@@ -1,0 +1,21 @@
+{{ if .Param "indieweb.enabled" }}
+{{ if not (.Param "indieweb.hidewmform") }}
+{{ if .Param "indieweb.endpoints.webmention" }}
+<details class="p" id="interactions">
+    <summary><b>{{ T "interactions" }}</b></summary>
+    {{ if .Param "indieweb.endpoints.webmentiond" }}
+    <div id="mentionslist"></div>
+    {{ $wmScript := resources.Get "js/webmentions.template.js" | resources.ExecuteAsTemplate "js/webmentions.js" . | minify | fingerprint }}
+    <script defer src="{{ $wmScript.RelPermalink }}" integrity="{{ $wmScript.Data.Integrity }}"></script>
+    {{ end }}
+    <form method="post" action="{{ .Param "indieweb.endpoints.webmention" }}">
+        <label for="wm-source" class="p">{{ T "wmform_label" }}</label>
+        <input id="wm-source" class="fw" type="url" name="source" placeholder="URL" style="margin-bottom: 5px;">
+        <input type="hidden" name="target" value="{{ .Permalink }}">
+        <input class="fw" type="submit" value="{{ T "wmform_btn" }}" style="margin-bottom: 5px;">
+    </form>
+    <a class="p button fw ct" href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de&reply={{ .Permalink }}">{{ T "anon_comment" }}</a>
+</details>
+{{ end }}
+{{ end }}
+{{ end }}

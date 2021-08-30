@@ -1,0 +1,28 @@
+{{ define "main" }}
+<main class="h-entry">
+	<article>
+		<data class="u-url hide" value="{{ .Permalink }}"></data>
+		{{ with .Title }}
+		<h1 class="p-name">{{ . }}</h1>
+		{{ end }}
+		{{ if not .Params.nometa }}
+		{{ partial "post_meta" . }}
+		{{ partial "post_actions" . }}
+		{{ end }}
+		{{ partial "oldcontentwarning" . }}
+		<div class="e-content">
+			{{ with .Params.audio }}
+			<audio controls preload="metadata" class="fw"><source src="{{ . }}"/></audio>
+			{{ end }}
+			{{ .Content }}
+			{{ with .Params.externalUrl }}
+			<p><a class="u-bookmark-of" href="{{ . }}" target="_blank" rel="noopener">{{ . }}</a></p>
+			{{ end }}
+		</div>
+		{{ partial "post_tags" . }}
+	</article>
+	{{ if (.Param "authorbox") }}{{ partialCached "authorbox" . }}{{ end }}
+</main>
+{{ partial "related" . }}
+{{ partial "mentions" . }}
+{{ end }}

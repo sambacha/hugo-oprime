@@ -1,0 +1,14 @@
+{{ with .Site.Author }}
+<div class="p-author h-card hide">
+	{{ if .avatar }}
+	<data class="u-photo" value="{{ .avatar | relURL }}"></data>
+	{{ end }}
+	{{ if .name }}
+	{{ if .link }}
+	<a href="{{ .link }}" class="p-name u-url" rel="me">{{ .name }}</a>
+	{{ else }}
+	<span class="p-name">{{ .name }}</span>
+	{{ end }}
+	{{ end }}
+</div>
+{{ end }}
